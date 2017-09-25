@@ -1,8 +1,9 @@
-require 'httparty'
+require "Kele/version"
 require 'json'
 require 'roadmap'
 
-class Kele
+module Kele
+
   include HTTParty
   #base_uri "https://www.bloc.io/api/v1/"
 
@@ -22,6 +23,12 @@ class Kele
     response = self.class.get(api_url("mentors/#{mentor_id}/student_availability"), headers: { "authorization" => @auth_token })
     @mentor_availability = JSON.parse(response.body)
     @mentor_availability
+  end
+
+  def get_messages(page = 1)
+   response = self.class.get(api_url("message_threads"), values: {"page": page} , headers: { "authorization" => @auth_token })
+   @messages = JSON.parse(response.body)
+   return @messages
   end
 
 private

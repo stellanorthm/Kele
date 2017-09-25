@@ -1,3 +1,8 @@
+# coding: utf-8
+lib = File.expand_path("../lib", __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require "Kele/version"
+
 Gem::Specification.new do |s|
    s.name          = 'kele'
    s.version       = '0.0.1'
